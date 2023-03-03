@@ -15,10 +15,8 @@ const app = express()
 ///////////
 // Test Route
 app.get("/", (req, res) => {
-    res.json({
-        response: "whaddup tho"
-    })
-})
+    res.send("hello world");
+  });
 
 //////////////
 // Listener
