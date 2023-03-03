@@ -21,4 +21,4 @@ app.get("/", (req, res) => {
 //////////////
 // Listener
 //////////////
-app.listen(4000, () => console.log(`You are now listening to the smooth tunes of Port ${PORT}`))
+app.listen(PORT, () => console.log(`You are now listening to the smooth tunes of Port ${PORT}`))
