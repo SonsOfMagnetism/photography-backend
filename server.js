@@ -1,14 +1,45 @@
 //////////////////
 // Dependencies
 //////////////////
-// get .env variables
 require("dotenv").config()
-// pull PORT from .env and give default value of 3000
-const {PORT=3000} = process.env
-// import express
+const {PORT=3000, DATABASE_URL} = process.env
 const express = require("express")
-// create application object
 const app = express()
+const mongoose  = require("mongoose")
+const cors = require("cors")
+const morgan = require("morgan")
+
+/////////////////////////
+// Database Connection
+/////////////////////////
+mongoose.connect(DATABASE_URL, {
+  useUnifiedTopology: true,
+  useNewUrLParser: true
+})
+
+mongoose.connection
+  .on("open", () => console.log("You are connected to mongoose"))
+  .on("close", () => console.log("You are disconnected from mongoose"))
+  .on("error", (error) => console.log(error))
+
+////////////
+// Schema
+////////////
+const PhotoSchema = new mongoose.Schema({
+  title: String,
+  yearTaken: Date,
+  location: String,
+  tags: String
+})
+
+const Photo = mongoose.model("Photo", PhotoSchema)
+
+////////////////
+// Middleware
+////////////////
+app.use(cors())
+app.use(morgan("dev"))
+app.use(express.json())
 
 ///////////
 // Routes
