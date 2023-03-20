@@ -44,10 +44,27 @@ app.use(express.json())
 ///////////
 // Routes
 ///////////
-// Test Route
+// Test
 app.get("/", (req, res) => {
     res.send("hello world");
-  });
+});
+
+// Index
+app.get("/photo", async (req,res) => {
+  try {
+    res.json(await Photo.find({}))
+  } catch (error) {
+    res.status(400).json(error)
+  }
+})
+
+// Create
+
+// Update
+
+// Delete
+
+// Show
 
 //////////////
 // Listener
