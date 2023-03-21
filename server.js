@@ -59,10 +59,31 @@ app.get("/photo", async (req,res) => {
 })
 
 // Create
+app.post("/photo", async (req, res) => {
+  try {
+    res.json(await Photo.create(req.body))
+  } catch (error) {
+    res.status(400).json(error)
+  }
+})
 
 // Update
+app.put("/photo/:id", async (req, res) => {
+  try {
+    res.json(await Photo.findByIdAndUpdate(req.params.id, req.body, {new: true}))
+  } catch (error) {
+    res.status(400).json(error)
+  }
+})
 
 // Delete
+app.delete("/photo/:id", async (req, res) => {
+  try {
+    res.json(await Photo.findByIdAndRemove(req.params.id))
+  } catch (error) {
+    res.status(400).json(error)
+  }
+})
 
 // Show
 
