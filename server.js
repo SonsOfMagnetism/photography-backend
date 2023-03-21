@@ -86,6 +86,13 @@ app.delete("/photo/:id", async (req, res) => {
 })
 
 // Show
+app.get("/photo/:id", async (req, res) => {
+  try {
+    res.json(await Photo.findById(req.params.id))
+  } catch (error) {
+    res.status(400).json(error)
+  }
+})
 
 //////////////
 // Listener
