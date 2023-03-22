@@ -27,7 +27,7 @@ mongoose.connection
 ////////////
 const PhotoSchema = new mongoose.Schema({
   title: String,
-  yearTaken: Date,
+  yearTaken: Number,
   location: String,
   tags: String
 })
