@@ -29,7 +29,8 @@ const PhotoSchema = new mongoose.Schema({
   title: String,
   yearTaken: Number,
   location: String,
-  tags: String
+  tags: String,
+  image: String
 })
 
 const Photo = mongoose.model("Photo", PhotoSchema)
